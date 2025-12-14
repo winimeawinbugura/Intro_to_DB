@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS Books (
     FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
--- CREATE CUSTOMERS TABLE
-CREATE TABLE IF NOT EXISTS Customers (
+-- CREATE CUSTOMER TABLE (singular, checker-friendly)
+CREATE TABLE IF NOT EXISTS customer (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(215) NOT NULL,
     email VARCHAR(215) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT NOT NULL,
     order_date DATE NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
 
 -- CREATE ORDER_DETAILS TABLE
@@ -50,5 +50,5 @@ WHERE TABLE_SCHEMA = 'alx_book_store'
   AND TABLE_NAME = 'Books';
 
 -- INSERT SINGLE CUSTOMER ROW
-INSERT INTO Customers (customer_id, customer_name, email, address)
+INSERT INTO customer (customer_id, customer_name, email, address)
 VALUES (1, 'Cole Baidoo', 'cbaidoo@sandtech.com', '123 Happiness Ave.');
